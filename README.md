@@ -11,7 +11,7 @@ This simple web application allows you to visualize data from a CSV file using P
    git clone git@github.com:SOLVE-NITK/RTLabs-NITK-2023.git
 3. Navigate to the project directory:
    ```shell
-   cd csv-data-plotter
+   cd RTLabs-NITK-2023
 4. Install the project dependencies:
    ```shell
    npm install

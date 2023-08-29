@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plot Page</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <div id="plot"></div>
+
+  <script>
+    fetch("trial_1.csv")
+      .then(response => response.text())
+      .then(csvData => {
+        const lines = csvData.trim().split("\n");
+        const yValues = [];
+        lines.slice(1).forEach((line) => {
+          const columns = line.split(",");
+          const yValue = parseFloat(columns[2]);
+          yValues.push(yValue);
+        });
+
+        const xValues = Array.from(
+          { length: yValues.length },
+          (_, index) => index + 1
+        );
+
+        const trace = {
+          x: xValues,
+          y: yValues,
+          mode: "lines+markers",
+          type: "scatter"
+        };
+
+        const layout = {
+          title: "My Plot",
+          xaxis: {
+            title: "X-axis"
+          },
+          yaxis: {
+            title: "Y-axis"
+          }
+        };
+
+        Plotly.newPlot("plot", [trace], layout);
+      })
+      .catch(error => {
+        console.error("Error fetching or processing CSV data:", error);
+      });
+  </script>
+</body>
+</html>
+
+

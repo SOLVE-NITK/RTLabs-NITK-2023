@@ -2,21 +2,28 @@
   "name": "file_upload",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app_new.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^0.9.2",
     "body-parser": "^1.20.2",
     "chart.js": "^3.9.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "i2c-mpu6050": "^2.3.0",
     "jsdom": "^22.1.0",
+    "mpu6050": "github:jstapels/mpu6050",
+    "mpu6050-gyro": "^1.1.1",
+    "node-dom": "^0.1.0",
     "nodemon": "^3.0.1",
-    "nodeplotlib": "^1.1.2",
+    "nodeplotlib": "^0.7.7",
     "plotly.js": "^2.26.0",
-    "plotly.js-dist": "^2.26.0"
+    "plotly.js-dist": "^2.26.0",
+    "socket.io": "^4.7.2"
   }
 }

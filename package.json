@@ -17,6 +17,7 @@
     "fs": "^0.0.1-security",
     "i2c-mpu6050": "^2.3.0",
     "jsdom": "^22.1.0",
+    "motor-l298n": "^0.0.1",
     "mpu6050": "github:jstapels/mpu6050",
     "mpu6050-gyro": "^1.1.1",
     "node-dom": "^0.1.0",
@@ -24,6 +25,10 @@
     "nodeplotlib": "^0.7.7",
     "plotly.js": "^2.26.0",
     "plotly.js-dist": "^2.26.0",
-    "socket.io": "^4.7.2"
+    "rpi": "^0.0.3",
+    "rpi-gpio": "^2.1.7",
+    "rpio": "^2.4.2",
+    "socket.io": "^4.7.2",
+    "wiringpi-node": "^2.4.4"
   }
 }

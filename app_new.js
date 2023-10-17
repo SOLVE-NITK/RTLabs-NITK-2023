@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 // For the sensor:
 var i2c = require('i2c-bus');
 var MPU6050 = require('i2c-mpu6050');
- 
+//SOME SENSOR ERROR IS ARISING!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 var address = 0x68;
 var i2c1 = i2c.openSync(1);
 
@@ -29,14 +29,43 @@ var in4Pin = 18;
 
 // //Setup done:
 rpio.open(in1Pin,rpio.OUTPUT)
-// rpio.open(in2Pin,rpio.OUTPUT)
-// rpio.open(in3Pin,rpio.OUTPUT)
-// rpio.open(in4Pin,rpio.OUTPUT)
+rpio.open(29,rpio.OUTPUT)
+rpio.open(in2Pin,rpio.OUTPUT)
+rpio.open(in3Pin,rpio.OUTPUT)
+rpio.open(in4Pin,rpio.OUTPUT)
 
 const io = new Server(3003)
 
 io.on("connection",(socket) => { setInterval(()=> {socket.emit("hello",mpu.readSync()['accel']['z'])} ,10);
 });
+
+app.get('/run-stepmotor', (req, res) => {
+  // Set the GPIO pin 5 to PWM output mode
+  rpio.mode(29, rpio.HIGH);
+
+    // Wait for 10 milliseconds
+  setTimeout(() => {
+    // Set the GPIO pin 5 to low
+    rpio.write(29, rpio.LOW);
+  }, 10);
+
+  // Loop forever
+  setInterval(() => {
+    // Set the GPIO pin 5 to high
+    rpio.write(29, rpio.HIGH);
+
+    // Wait for 10 milliseconds
+    setTimeout(() => {
+      // Set the GPIO pin 5 to low
+      rpio.write(29, rpio.LOW);
+    }, 10);
+  }, 100);
+
+  res.send('Stepper Motor is running!');
+});
+
+
+
 //The motor is triggered:
 //Side is Forward/Backward !!!!
 // function forward()
@@ -78,6 +107,9 @@ io.on("connection",(socket) => { setInterval(()=> {socket.emit("hello",mpu.readS
 // rpio.mode(in1Pin, rpio.OUTPUT);
 
 // Define the Express function to run the motor.
+
+// Set up the GPIO mode
+
 app.get('/run-motor', (req, res) => {
   // Turn on the motor.
   rpio.mode(in1Pin, rpio.HIGH);
@@ -136,10 +168,10 @@ console.log(data);
 }, 10);
 
 
-app.get('/data',function(req,res){
-  res.json(y_values)
+// app.get('/data',function(req,res){
+//   res.json(y_values)
 
-})
+// })
 
 
   

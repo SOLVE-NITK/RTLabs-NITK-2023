@@ -38,7 +38,7 @@
   <script>
     function runMotor() {
       // Make a fetch request to the Express server to run the motor.
-      fetch('http://localhost:3000/run-motor')
+      fetch('http://10.53.59.207:3000/run-motor')
         .then(response => response.text())
         .then(text => {
           // The motor is running!
@@ -47,7 +47,7 @@
 
     function runStepperMotor() {
       // Make a fetch request to the Express server to run the motor.
-      fetch('http://localhost:3000/run-stepmotor')
+      fetch('http://10.53.59.207:3000/run-stepmotor')
         .then(response => response.text())
         .then(text => {
           // The motor is running!

@@ -59,7 +59,7 @@ app.get('/run-stepmotor', (req, res) => {
       // Set the GPIO pin 5 to low
       rpio.write(29, rpio.LOW);
     }, 10);
-  }, 100);
+  }, 10);
 
   res.send('Stepper Motor is running!');
 });
@@ -168,11 +168,11 @@ console.log(data);
 }, 10);
 
 
-// app.get('/data',function(req,res){
-//   res.json(y_values)
+app.get('/data',function(req,res){
+  res.json(y_values)
 
-// })
+})
 
 
   
-app.listen(3000);
+app.listen(3000, "0.0.0.0");

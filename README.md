@@ -1,5 +1,4 @@
 # RTLabs-NITK-2023
-# CSV Data Plotter
 
 This simple web application allows you to visualize data from a CSV file using Plotly.js. It fetches data from a CSV file and generates a line plot based on the data.
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -38,6 +38,65 @@
 
         Plotly.newPlot("plot", [trace], layout);
         });
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZingChart Page</title>
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+</head>
+<body>
+  <div id="chart-container"></div>
+
+  <script>
+    fetch("/data")
+      .then(response => response.json())
+      .then(data => {
+        const xValues = data.map((_, index) => index + 1);
+        const yValues = data;
+
+        const chartConfig = {
+          type: 'line',
+          title: {
+            text: 'My Chart',
+          },
+          scaleX: {
+            values: xValues,
+            minValue: 1,
+            step: 1,
+          },
+          scaleY: {
+            values: '0:10:1', // Adjust the scale range as needed
+          },
+          plot: {
+            tooltip: {
+              text: '%v', // Show Y-values on hover
+            },
+            'max-trackers': 9999, // Set this to a large number to enable tooltips for all data points
+          },
+          series: [
+            {
+              values: yValues,
+              lineColor: 'blue', // Adjust the line color as needed
+              marker: {
+                visible: true,
+                backgroundColor: 'blue', // Adjust the marker color as needed
+              },
+            },
+          ],
+        };
+
+        zingchart.render({
+          id: 'chart-container',
+          data: chartConfig,
+          height: '400',
+          width: '600',
+        });
+      });
   </script>
 </body>
 </html>

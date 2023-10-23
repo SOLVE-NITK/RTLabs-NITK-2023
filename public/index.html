@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
   <title>Document</title>
   <style>
     body {
@@ -33,8 +35,67 @@
   </style>
 </head>
 <body>
-  <button id="generatePlot" onclick="runMotor()">Load</button>
-  <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button>
+  <header>
+    <div class = "container">
+    <form class = "search-form" action="index.html">
+      <input type="text" name="q" placeholder="Search...">
+      <input type="submit" value="Go"  class="search-button">
+    </form>
+    </div>
+  
+  
+  
+    
+    <div class="nav">
+    <img typeof="foaf:Image" src="https://rtlabs.nitk.ac.in/sites/default/files/styles/img_1170_204/public/images/slideshows/home_new.png?itok=TaESDGH8"  alt="">
+    <nav class = nav-bar1>
+      <a href="index.html">Home </a>
+      <a href="index.html">RT Lab </a>
+      <a href="index.html">Simulations </a>
+      <a href="index.html">Lagu Paata </a>
+      <a href="index.html">Virtual Tour </a>
+      <a href="index.html">Downloads </a>
+      <a href="index.html">Photo Gallerey </a>
+      <a href="index.html">Contact Us </a>
+      <a href="index.html">Login </a>
+    </nav>
+  </div>
+    <main>
+      <h3 class = "text-heading">FREE VIBRATION OF CANTILEVER BEAM</h3>
+      <nav class = nav-bar2>
+      <div class="item-list">
+        <a href="index.html"> <img src="favicons/img1.png" alt="Favicon 1">Theory</a>
+        <a href="index.html" class="procedure"> <img src="favicons/img2.png" alt="Favicon 1"> Procedure   </a>
+        <a href="index.html" class="active jquery-once-2-processed"> <img src="favicons/img3.png" alt="Favicon 1"> Self Evaluation</a>
+        <a href="index.html" class="active jquery-once-2-processed"> <img src="favicons/img4.png" alt="Favicon 1"> Remote Trigger</a>
+        <a href="index.html" class="active jquery-once-2-processed"> <img src="favicons/img5.png" alt="Favicon 1">Assignments</a>
+        <a href="index.html" class="active jquery-once-2-processed"> <img src="favicons/img6.png" alt="Favicon 1"> Reference</a>
+        <a href="index.html" class="active jquery-once-2-processed"> <img src="favicons/img7.png" alt="Favicon 1"> Video</a>
+        
+      </div>
+    </nav>
+      <div class="container2">
+        <img src = "https://rtlabs.nitk.ac.in/modules/webApp/dist/img/cantileverBeamFree.jpg">
+        <div class="dropdown">
+          <select id="myDropdown">
+            <option value="option1">Actuation 1</option>
+            <option value="option2">Actuation 2</option>
+            <option value="option3">Actuation 3</option>
+            <option value="option4">Actuation 4</option>
+          </select>
+        </div>
+        
+      </div>
+      
+    </main>
+    <button id="generatePlot" onclick="runMotor()">Load</button>
+    <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button>
+  
+  </div>
+  </header>
+ 
+ 
+
   <script>
     function runMotor() {
       // Make a fetch request to the Express server to run the motor.

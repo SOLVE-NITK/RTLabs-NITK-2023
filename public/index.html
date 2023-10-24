@@ -74,23 +74,29 @@
         
       </div>
     </nav>
-      <div class="container2">
-        <img src = "https://rtlabs.nitk.ac.in/modules/webApp/dist/img/cantileverBeamFree.jpg">
-        <div class="dropdown">
-          <select id="myDropdown">
-            <option value="option1">Actuation 1</option>
-            <option value="option2">Actuation 2</option>
-            <option value="option3">Actuation 3</option>
-            <option value="option4">Actuation 4</option>
-          </select>
-        </div>
-        
+    <div class="container2">
+      <img src = "https://rtlabs.nitk.ac.in/modules/webApp/dist/img/cantileverBeamFree.jpg">
+      <div class="dropdown">
+        <select id="myDropdown">
+          <option value="option1">Servo Motor</option>
+          <option value="option2">Stepper Motor</option>
+          <option value="option3">Both</option>
+        </select>
+
       </div>
+      <div class = "button-container">
+        <button id="generatePlot" onclick="runMotor()">Load</button>
+        <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button>
+        </div>
       
+    </div>
+    
     </main>
-    <button id="generatePlot" onclick="runMotor()">Load</button>
-    <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button>
-  
+    
+    
+    
+      
+      
   </div>
   </header>
  

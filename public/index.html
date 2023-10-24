@@ -85,8 +85,11 @@
 
       </div>
       <div class = "button-container">
-        <button id="generatePlot" onclick="runMotor()">Load</button>
-        <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button>
+        <!-- <button id="generatePlot" onclick="runMotor()">Load</button>
+        <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button> -->
+        <button id="loadButton" onclick="runMotor()">Load</button>
+        <button id="loadStepperButton" onclick="runStepperMotor()">Load Stepper</button>
+
         </div>
       
     </div>
@@ -127,6 +130,33 @@
       window.open("/plotPage.html", "_blank");
     });
   </script>
+  <script>
+    // Function to show or hide buttons based on the selected option
+    function updateButtons() {
+      const dropdown = document.getElementById("myDropdown");
+      const loadButton = document.getElementById("loadButton");
+      const loadStepperButton = document.getElementById("loadStepperButton");
+  
+      if (dropdown.value === "option1") { // Servo Motor
+        loadButton.style.display = "block";
+        loadStepperButton.style.display = "none";
+      } else if (dropdown.value === "option2") { // Stepper Motor
+        loadButton.style.display = "none";
+        loadStepperButton.style.display = "block";
+      } else if (dropdown.value === "option3") { // Both
+        loadButton.style.display = "block";
+        loadStepperButton.style.display = "block";
+      }
+    }
+  
+    // Event listener to update buttons when dropdown selection changes
+    const dropdown = document.getElementById("myDropdown");
+    dropdown.addEventListener("change", updateButtons);
+  
+    // Initial update
+    updateButtons();
+  </script>
+  
 </body>
 </html>
 

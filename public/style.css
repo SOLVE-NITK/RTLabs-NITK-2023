@@ -110,13 +110,17 @@ header nav a {
 }
 .button-container {
   text-align: center;
+  display: flex; /* Make the button container a flex container */
+  align-items: center; /* Center the buttons vertically */
+  justify-content: flex-start;
 }
 
 #myDropdown {
   width: 150px; 
   padding: 5px;
 }
-#generatePlot {
+#loadButton,
+#loadStepperButton{
   padding: 12px 24px;
   font-size: 18px;
   font-weight: bold;
@@ -128,6 +132,7 @@ header nav a {
   transition: background-color 0.3s;
   margin-right: 10px; 
 }
+
 
 #generatePlot:hover {
   background-color: #0056b3;

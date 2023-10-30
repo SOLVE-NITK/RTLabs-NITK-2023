@@ -34,9 +34,35 @@ rpio.open(in2Pin,rpio.OUTPUT)
 rpio.open(in3Pin,rpio.OUTPUT)
 rpio.open(in4Pin,rpio.OUTPUT)
 
+rpio.mode(in1Pin, rpio.LOW);
+rpio.mode(in2Pin, rpio.LOW);
+rpio.mode(in3Pin, rpio.LOW);
+rpio.mode(in4Pin, rpio.LOW);
+
+// // rpio.mode(29, rpio.LOW);
+// rpio.mode(29, rpio.HIGH);
+
 const io = new Server(3003)
 
 io.on("connection",(socket) => { setInterval(()=> {socket.emit("hello",mpu.readSync()['accel']['z'])} ,10);
+});
+app.get('/run-motor', (req, res) => {
+  // Turn on the motor.
+  rpio.mode(in1Pin, rpio.HIGH);
+  rpio.mode(in2Pin, rpio.HIGH);
+  rpio.mode(in3Pin, rpio.HIGH);
+  rpio.mode(in4Pin, rpio.HIGH);
+
+  // Wait for 1 second.
+  setTimeout(() => {
+    // Turn off the motor.
+    rpio.mode(in1Pin, rpio.LOW);
+    rpio.mode(in2Pin, rpio.LOW);
+    rpio.mode(in3Pin, rpio.LOW);
+    rpio.mode(in4Pin, rpio.LOW);
+  }, 5000);
+
+  res.send('Motor is running!');
 });
 
 app.get('/run-stepmotor', (req, res) => {
@@ -58,8 +84,8 @@ app.get('/run-stepmotor', (req, res) => {
     setTimeout(() => {
       // Set the GPIO pin 5 to low
       rpio.write(29, rpio.LOW);
-    }, 10);
-  }, 10);
+    }, 1);
+  }, 1);
 
   res.send('Stepper Motor is running!');
 });
@@ -110,24 +136,6 @@ app.get('/run-stepmotor', (req, res) => {
 
 // Set up the GPIO mode
 
-app.get('/run-motor', (req, res) => {
-  // Turn on the motor.
-  rpio.mode(in1Pin, rpio.HIGH);
-  rpio.mode(in2Pin, rpio.HIGH);
-  rpio.mode(in3Pin, rpio.HIGH);
-  rpio.mode(in4Pin, rpio.HIGH);
-
-  // Wait for 1 second.
-  setTimeout(() => {
-    // Turn off the motor.
-    rpio.mode(in1Pin, rpio.LOW);
-    rpio.mode(in2Pin, rpio.LOW);
-    rpio.mode(in3Pin, rpio.LOW);
-    rpio.mode(in4Pin, rpio.LOW);
-  }, 5000);
-
-  res.send('Motor is running!');
-});
 // def reverse(sec):
 //     init()
 //     gpio.output(17, True)

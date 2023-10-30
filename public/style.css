@@ -1,112 +1,139 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-  }
-  .container {
-    justify-content: right;
-    /* background-color: #2a2a2a; */
-    margin-top: 50px;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    padding-top: 80px;
-    position: left;
-  }
- 
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+.container {
+  justify-content: right;
+  margin-top: 100px;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 80px;
+  position: left;
+}
+
 /* Style the search form and its components */
 .search-form {
-    margin: 20px;
-    display: flex;
-    position: center;
-    background-color: #2a2a2a;
+display: flex;
+ align-items: center;
+  display: flex;
+  padding-left: 10px;
+  flex: 1;
+  background-color: #2a2a2a;
 }
 
 .search-input {
-    background-color: #2a2a2a;
-    color: white;
-    border: none;
-    padding: 5px;
-    position: left;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 1;
 }
 
 .search-button {
-    background-color: #2a2a2a;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
-  header {
-    
-    color: #fff;
-    padding: 15px;
-  }
-  header h1 {
-    font-size: 36px;
-    margin: 0;
-  }
+header {
   
-   .nav-bar1 {
-    float: center;
-    background: #3b281c;
-    /* height: 32px; */
-    padding: 10px;
-  }
-  .item-list {
-    display: flex;
-    align-items: flex-start; /* Display list items in a horizontal row */
-     /* Center items vertically within the flex container */
-  }
+  color: #fff;
+  padding: 15px;
+}
+header h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+ .nav-bar1 {
+  float: center;
+  background: #3b281c;
+  padding: 10px;
+}
+.item-list {
+  display: flex;
+  align-items: flex-start; 
+}
+
+.item-list a {
+  text-decoration: none;
+  display: flex;
   
-  /* .item-list ul.index {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  } */
+  flex-direction: column;
+  text-align: center; 
+  align-items: center; 
+  color: black;
+}
+
+.item-list img {
+  max-width: 32px; 
+  max-height: 32px; 
+  margin-bottom: 5px; 
+}
+.text-heading {
+  background: #3caac8;
+  color: #fff;
+  padding: 7px 20px;
+  font-family: 'oswaldregular';
+  text-transform: uppercase;
+  margin-top: 15px; 
+  margin-bottom: 10px;
+}
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+.dropdown-menu {
+  min-width: 100px;
+} 
+
+.container2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.container2 img {
+  max-width: 100%;
+  height: auto; 
+}
+.dropdown {
+  margin-left: 100px;
   
-  /* .item-list li {
-    margin-right: 20px; 
-  } */
-  
-  .item-list a {
-    text-decoration: none;
-    display: flex;
-    /* display: grid; */
-    /* display: inline-block; */
-    flex-direction: column;
-    text-align: center; /* Stack the favicon on top of the text */
-    align-items: center; /* Center items horizontally within the flex container */
-    color: black; /* Text color */
-  }
-  
-  .item-list img {
-    max-width: 32px; /* Limit the width of the favicons */
-    max-height: 32px; /* Limit the height of the favicons */
-    margin-bottom: 5px; /* Add spacing between favicon and text */
-  }
-  
-  .text-heading {
-    background: #3caac8;
-    color: #fff;
-    padding: 7px 20px;
-    font-family: 'oswaldregular';
-    text-transform: uppercase;
-    margin-top: 15px; 
-    margin-bottom: 10px;
-  }
-  header nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-  }
- 
-  .dropdown {
-    margin-right: 10px;
-  }
-  .dropdown-menu {
-    min-width: 100px;
-  } 
-  /* img {
-    width: 100px;
-    height: 100px;
-  } */
+}
+.button-container {
+  text-align: center;
+  display: flex; /* Make the button container a flex container */
+  align-items: center; /* Center the buttons vertically */
+  justify-content: flex-start;
+}
+
+#myDropdown {
+  width: 150px; 
+  padding: 5px;
+}
+#loadButton,
+#loadStepperButton{
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0073b7;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; 
+}
+
+
+#generatePlot:hover {
+  background-color: #0056b3;
+}

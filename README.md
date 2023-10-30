@@ -1,7 +1,6 @@
 # RTLabs-NITK-2023
-# CSV Data Plotter
 
-This simple web application allows you to visualize data from a CSV file using Plotly.js. It fetches data from a CSV file and generates a line plot based on the data.
+This is the official repository of Remote Triggering Labs (<i>RTLabs</i>) Web Application.
 
 ## Getting Started
 1. Ensure that you have Node.js and npm (Node Package Manager) installed on your system. You can download them from the official [Node.js website](https://nodejs.org/).

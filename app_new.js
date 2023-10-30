@@ -11,7 +11,7 @@ var i2c1 = i2c.openSync(1);
 var mpu = new MPU6050(i2c1, address);
 const bodyParser = require("body-parser");
 
-
+//
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));

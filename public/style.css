@@ -4,12 +4,14 @@ body {
 }
 .container {
   justify-content: right;
-  margin-top: 100px;
+  margin-top: 0px;
   color: #fff;
   text-decoration: none;
-  padding-top: 80px;
+  padding-top: 0px;
   position: left;
 }
+
+
 
 /* Style the search form and its components */
 .search-form {
@@ -54,7 +56,8 @@ header h1 {
 }
 .item-list {
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
+  overflow: hidden; 
 }
 
 .item-list a {
@@ -65,6 +68,13 @@ header h1 {
   text-align: center; 
   align-items: center; 
   color: black;
+  margin: 0.4%;
+  float: left;
+  text-decoration: none;
+}
+
+.item-list .icon {
+  display: none;
 }
 
 .item-list img {

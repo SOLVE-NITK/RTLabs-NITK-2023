@@ -44,7 +44,7 @@ exports.run = function(speedA,speedB)
 
 
   setTimeout(()=>{
-  clearInterval(interval)
+  clearInterval(interval);
   rpio.pwmSetData(ENA, 0); // Set the speed of motor A to 50%
   rpio.pwmSetData(ENB, 0); // Set the speed of motor B to 75%
 

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const { Server } = require("socket.io");
 var servo_motor = require('./app_trial')
+var stepper_motor = require('./app_stepper_trial')
 // For the sensor:
 var i2c = require('i2c-bus');
 var MPU6050 = require('i2c-mpu6050');
@@ -23,13 +24,11 @@ app.get("/", (req, res) => {
 
   //For the mototr driver:
 const rpio = require('rpio');
-var in1Pin = 11;
-var in2Pin = 15;
-var in3Pin = 16;
-var in4Pin = 18;
 // //Setup done:
 // rpio.open(in1Pin,rpio.OUTPUT)
-rpio.open(29,rpio.OUTPUT)
+
+// rpio.open(29,rpio.OUTPUT)
+
 // rpio.open(in2Pin,rpio.OUTPUT)
 // rpio.open(in3Pin,rpio.OUTPUT)
 // rpio.open(in4Pin,rpio.OUTPUT)
@@ -56,121 +55,74 @@ rpio.open(29,rpio.OUTPUT)
 
 // io.on("connection",(socket) => { setInterval(()=> {socket.emit("hello",mpu.readSync()['accel']['z'])} ,10);
 // });
-
+let y_values=[]
 app.get('/run-motor', (req, res) => {
   servo_motor.run(50,100);
   res.send('Motor is running!');
+  
+  var interval = setInterval(() => {
+  var data = mpu.readSync(); //Issue
+  y_values.push(data['accel']['z']);
+  // reverse();
+  // left();
+  // //Now forward motion:
+  //   rpio.open(in1Pin,rpio.LOW)
+  //   rpio.open(in2Pin,rpio.HIGH)
+  //   rpio.open(in3Pin,rpio.HIGH)
+  //   rpio.open(in4Pin,rpio.LOW)
+  console.log(data);
+  }, 10);
+
+  setTimeout(()=> {
+    clearInterval(interval)
+  },10000);
+
 });
+
+app.get('/run-motor-data',function(req,res){
+  res.json(y_values)
+
+})
 
 app.get('/run-stepmotor', (req, res) => {
   // Set the GPIO pin 5 to PWM output mode
-  rpio.mode(29, rpio.HIGH);
+  // rpio.mode(29, rpio.HIGH);
 
-    // Wait for 10 milliseconds
-  setTimeout(() => {
-    // Set the GPIO pin 5 to low
-    rpio.mode(29, rpio.LOW);
-  }, 10);
+  //   // Wait for 10 milliseconds
+  // setTimeout(() => {
+  //   // Set the GPIO pin 5 to low
+  //   rpio.mode(29, rpio.LOW);
+  // }, 100);
+  stepper_motor.run();
 
-  // Loop forever
-  setInterval(() => {
-    // Set the GPIO pin 5 to high
-    rpio.mode(29, rpio.HIGH);
+  // // Loop forever
+  // setInterval(() => {
+  //   // Set the GPIO pin 5 to high
+  //   rpio.mode(29, rpio.HIGH);
 
-    // Wait for 10 milliseconds
-    setTimeout(() => {
-      // Set the GPIO pin 5 to low
-      rpio.mode(29, rpio.LOW);
-    }, 10);
-  }, 10);
+  //   // Wait for 10 milliseconds
+  //   setTimeout(() => {
+  //     // Set the GPIO pin 5 to low
+  //     rpio.mode(29, rpio.LOW);
+  //   }, 10);
+  // }, 10);
 
   res.send('Stepper Motor is running!');
 });
 
-
-
-//The motor is triggered:
-//Side is Forward/Backward !!!!
-// function forward()
-// {
-//     rpio.mode(in1Pin, rpio.LOW)
-//     rpio.mode(in2Pin, rpio.HIGH)
-//     rpio.mode(in3Pin, rpio.HIGH)
-//     rpio.mode(in4Pin, rpio.LOW)
-//     console.log('Hi!!')
-//     // rpio.sleep(1)
-// }
-
-// function reverse()
-// {
-//     rpio.mode(in1Pin, rpio.HIGH)
-//     rpio.mode(in2Pin, rpio.LOW)
-//     rpio.mode(in3Pin, rpio.LOW)
-//     rpio.mode(in4Pin, rpio.HIGH)
-// }
-
-// function left()
-// {
-//     rpio.mode(in1Pin, rpio.HIGH)
-//     rpio.mode(in2Pin, rpio.LOW)
-//     rpio.mode(in3Pin, rpio.HIGH)
-//     rpio.mode(in4Pin, rpio.LOW)
-
-// }
-
-// function right()
-// {
-//     rpio.mode(in1Pin, rpio.LOW)
-//     rpio.mode(in2Pin, rpio.HIGH)
-//     rpio.mode(in3Pin, rpio.LOW)
-//     rpio.mode(in4Pin, rpio.HIGH)
-// }
-
-// Set the GPIO pin to output mode.
-// rpio.mode(in1Pin, rpio.OUTPUT);
-
-// Define the Express function to run the motor.
-
-// Set up the GPIO mode
-
-// def reverse(sec):
-//     init()
-//     gpio.output(17, True)
-//     gpio.output(22, False)
-//     gpio.output(23, False)
-//     gpio.output(24, True)
-//     time.sleep(sec)
-//     gpio.cleanup()
-// def left_turn(sec):
-//     init()
-//     gpio.output(17, True)
-//     gpio.output(22, False)
-//     gpio.output(23, True)
-//     gpio.output(24, False)
-//     time.sleep(sec)
-//     gpio.cleanup()
-// def right_turn(sec):
-//     init()
-//     gpio.output(17, False)
-//     gpio.output(22, True)
-//     gpio.output(23, False)
-//     gpio.output(24, True)
-//     time.sleep(sec)
-//     gpio.cleanup()
-// forward();
-let y_values=[]
-setInterval(() => {
-var data = mpu.readSync(); //Issue
-y_values.push(data['accel']['z']);
-// reverse();
-// left();
-// //Now forward motion:
-//   rpio.open(in1Pin,rpio.LOW)
-//   rpio.open(in2Pin,rpio.HIGH)
-//   rpio.open(in3Pin,rpio.HIGH)
-//   rpio.open(in4Pin,rpio.LOW)
-console.log(data);
-}, 10);
+// let y_values=[]
+// setInterval(() => {
+// var data = mpu.readSync(); //Issue
+// y_values.push(data['accel']['z']);
+// // reverse();
+// // left();
+// // //Now forward motion:
+// //   rpio.open(in1Pin,rpio.LOW)
+// //   rpio.open(in2Pin,rpio.HIGH)
+// //   rpio.open(in3Pin,rpio.HIGH)
+// //   rpio.open(in4Pin,rpio.LOW)
+// console.log(data);
+// }, 10);
 
 
 app.get('/data',function(req,res){

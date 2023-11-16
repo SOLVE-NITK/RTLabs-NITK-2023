@@ -108,6 +108,10 @@ header nav a {
   display: flex;
   align-items: center;
   margin-bottom: 10px; 
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .container2 img {
@@ -120,6 +124,7 @@ header nav a {
 }
 .button-container {
   text-align: center;
+  flex-wrap: wrap;
   display: flex; /* Make the button container a flex container */
   align-items: center; /* Center the buttons vertically */
   justify-content: flex-start;

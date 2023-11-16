@@ -53,7 +53,7 @@
   <div id="chart-container"></div>
 
   <script>
-    fetch("/data")
+    fetch("/run-motor-data")
       .then(response => response.json())
       .then(data => {
         const xValues = data.map((_, index) => index + 1);

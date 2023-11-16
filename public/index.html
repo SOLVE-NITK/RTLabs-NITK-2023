@@ -119,8 +119,9 @@
     img,
   video,
   iframe {
-    max-inline-size: 100%;
-    block-size: auto;
+   width: 100%;
+   height: 80%;
+
   }
   
   </style>
@@ -165,23 +166,24 @@
         </a>
       </div>
 
-      
+      <img src="http://10.53.49.149:8080/video" width="100%" height="100%"></img>
     <div class="container2">
       
-        <iframe src="https://vdo.ninja/?view=D9t4X6y" type="video/mp4"></iframe>
+        
       <div class="dropdown">
         <select id="myDropdown">
           <option value="option1">Servo Motor</option>
           <option value="option2">Stepper Motor</option>
           <option value="option3">Both</option>
         </select>
+         <!-- <button id="generatePlot" onclick="runMotor()">Load</button>
+          <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button> -->
+          <button id="loadButton" onclick="runMotor()">Load</button>
+          <button id="loadStepperButton" onclick="runStepperMotor()">Load Stepper</button>
 
       </div>
       <div class = "button-container">
-        <!-- <button id="generatePlot" onclick="runMotor()">Load</button>
-        <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button> -->
-        <button id="loadButton" onclick="runMotor()">Load</button>
-        <button id="loadStepperButton" onclick="runStepperMotor()">Load Stepper</button>
+         
 
         </div>
       

@@ -24,13 +24,13 @@ exports.run = function()
           {
               console.log(dCycle);
               setSpeed(dCycle);
-              dCycle+=5
+              // dCycle+=5
           },1000)
 
           setTimeout(()=>{
             clearInterval(interval);
             setSpeed(0);
-            },10000)
+            },1000)
 
       
 }

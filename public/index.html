@@ -1,224 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forced Vibration of Cantilever Beam</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
 
-  <title>Document</title>
-  <style>
-    body {
-      display: flex;
-      /* justify-content: center;
-      align-items: center; */
-      height: 100vh;
-      width: 100vw;
-      margin: 0;
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-    }
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/query.css" />
+    <!-- <script defer src="https://code.jquery.com/jquery.min.js"></script>
+    <script
+      defer
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://code.jquery.com/ui/1.8.17/jquery-ui.min.js"
+    ></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script
+      defer
+      type="text/javascript"
+      src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+    ></script>
 
-    #generatePlot {
-      padding: 12px 24px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      background-color: #007bff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #generatePlot:hover {
-      background-color: #0056b3;
-    }
-
-      /* Add a black background color to the top navigation */
-  .topnav {
-    background-color: #333;
-    overflow: hidden;
-  }
-
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  /* Add an active class to highlight the current page */
-  .topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-
-  /* Hide the link that should open and close the topnav on small screens */
-  .topnav .icon {
-    display: none;
-  }
-
-  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-  @media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {display: none;}
-    .topnav a.icon {
-      float: right;
-      display: block;
-    }
-  }
-
-  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-  @media screen and (max-width: 600px) {
-    .topnav.responsive {position: relative;}
-    .topnav.responsive a.icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .topnav.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .item-list a:not(:first-child) {display: none;}
-    .item-list a.icon {
-      float: right;
-      display: block;
-    }
-  }
-
-  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-  @media screen and (max-width: 600px) {
-    .item-list.responsive {position: relative;}
-    .item-list.responsive a.icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .item-list.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  }
-
-    img,
-  video,
-  iframe {
-   width: 100%;
-   height: 80%;
-
-  }
-  
-  </style>
-</head>
-<body>
-  <header>
-    <div class = "container">
-    <form class = "search-form" action="index.html">
-      <input type="text" name="q" placeholder="Search...">
-      <input type="submit" value="Go"  class="search-button">
-    </form>
-    </div>
-    <div class="nav">
-    <img src="favicons/home_new.png"  alt="" width="100%" height="auto">
-    
-    <div class="topnav" id="myTopnav">
-      <a href="index.html" class="active">Home </a>
-      <a href="index.html">RT Lab </a>
-      <a href="index.html">Simulations </a>
-      <a href="index.html">Lagu Paata </a>
-      <a href="index.html">Virtual Tour </a>
-      <a href="index.html">Downloads </a>
-      <a href="index.html">Photo Gallerey </a>
-      <a href="index.html">Contact Us </a>
-      <a href="index.html">Login </a>
-      <a href="javascript:void(0);" class="icon" onclick="navbar1()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    <main>
-      <h3 class = "text-heading">FREE VIBRATION OF CANTILEVER BEAM</h3>
-      <div class="item-list" id="item-list-nav">
-        <a href="theory.html" class="option"><img src="favicons/theory.svg">Theory</a>
-        <a href="index.html" class="option"><img src="favicons/procedure.svg"> Procedure</a>
-        <a href="self_evaluation.html" class="option"> <img src="favicons/self_eval.svg"> Self Evaluation</a>
-        <a href="index.html" class="option"> <img src="favicons/trigger.svg"> Remote Trigger</a>
-        <a href="index.html" class="option"> <img src="favicons/assignment.svg"> Assignments</a>
-        <a href="index.html" class="option"> <img src="favicons/books.svg"> Reference</a>
-        <a href="index.html" class="option"> <img src="favicons/camera.svg"> Video</a>
-        <a href="javascript:void(0);" class="icon" onclick="navbar2()">
-          <i class="fa fa-bars"></i>
-        </a>
+    <script defer src="js/script.js"></script> -->
+  </head>
+  <body onload="startsim();varinit();
+">
+    <!-- Logo -->
+    <!-- Experiment Title -->
+    <!-- Tools Sections -->
+    <!-- Tools Container -->
+    <!-- Simulation Container -->
+    <div class="title-div">
+      <!-- <span class="round left-top"></span>
+      <span class="round left-bottom"></span>
+      <span class="round right-top"></span>
+      <span class="round right-bottom"></span> -->
+      <div class="logo-div">
+        <a href="#"><img src="images/nitk.svg" alt="Logo" class="logo" /></a>
       </div>
-
-      <img src="http://10.53.49.149:8080/video" width="100%" height="100%"></img>
-    <div class="container2">
-      
+      <h1>Forced Vibration of a cantilever beam</h1>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <ul class="tool-menu">
+          <!-- <li class="tool-list">
+            <a href="#simulation" class="tool-link" title="Simulation"
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8.25V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18V8.25m-18 0V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6zM7.5 6h.008v.008H7.5V6zm2.25 0h.008v.008H9.75V6z"
+                />
+              </svg>
+              <span>Simulation</span></a
+            >
+          </li>
+          <li class="tool-list">
+            <a href="#variables" class="tool-link" title="Variables"
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09"
+                />
+              </svg>
+              <span>Variables</span></a
+            >
+          </li>
+          <li class="tool-list">
+            <a href="#comments" class="tool-link" title="Comments"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Results</span></a
+            >
+          </li> -->
+          <li><a href="theory.html" class="option"> <img src="images/theory.svg"> </a></li>
+          <li><a href="steps.html" class="option"><img src="images/procedure.svg"></a></li>
+            
+        <li><a href="self_evaluation.html" class="option"> <img src="images/self_eval.svg"> </a></li>
+        <li><a href="index.html" class="option"> <img src="images/trigger.svg"></a></li>
+        <li><a href="questions.html" class="option"> <img src="images/assignment.svg"> </a></li>
+        <li><a href="books_ref.html" class="option"> <img src="images/books.svg"> </a></li>
+       <li> <a href="live_feed.html" class="option"> <img src="images/camera.svg"></a></li>
+          </li>
+          </li>
         
-      <div class="dropdown">
-        <select id="myDropdown">
-          <option value="option1">Servo Motor</option>
-          <option value="option2">Stepper Motor</option>
-          <option value="option3">Both</option>
-        </select>
-         <!-- <button id="generatePlot" onclick="runMotor()">Load</button>
-          <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button> -->
-          <button id="loadButton" onclick="runMotor()">Load</button>
-          <button id="loadStepperButton" onclick="runStepperMotor()">Load Stepper</button>
-
+        </ul>
       </div>
-      <div class = "button-container">
-         
 
+      <div class="main">
+        <div class="main-section">
+          <div id="simulation" class="main__task-div">
+            <div id="controls" class="div__control">
+              <!-- <img id="playpausebutton" onclick="simstate()" src="./images/blueplaydull.svg" alt="" /> -->
+              <img id="graphbutton" onclick="plotgraph()" src="./images/graphbutton.svg" alt="" />
+            </div>
+            <h3 class="task-title">Actuation Modes</h3>
+            <div class="canvas__div">
+              <div class="img-div">
+                <div class="circuit-dia">
+                  <!-- <img src="images/massSystem.PNG" alt="mass system" /> -->
+                  <!--Put our buttons-->
+                  <div class="dropdown">
+                    <select id="myDropdown">
+                      <option value="option1">Servo Motor</option>
+                      <option value="option2">Stepper Motor</option>
+                      <option value="option3">Both</option>
+                    </select>
+            
+                  </div>
+                  <div class = "button-container">
+                    <!-- <button id="generatePlot" onclick="runMotor()">Load</button>
+                    <button id="generatePlot" onclick="runStepperMotor()">Load Stepper</button> -->
+                    <button id="loadButton" onclick="runMotor()">Load</button>
+                    <button id="loadStepperButton" onclick="runStepperMotor()">Load Stepper</button>
+            
+                    </div>
+
+                  <span class="tooltip cir-tooltip"></span>
+                </div>
+                <!-- <div class="cross-img">
+                  <img src="images/crossC.PNG" alt="cross section" />
+                </div> -->
+                <!-- <div class="other-sec display-hide">
+                  <div>
+                    <label for="CsArea">C/s Area(m^2)</label>
+                    <input class="var-spinner" id="CsArea" name="value" />
+                  </div>
+                  <div>
+                    <label for="Ivalue">Ixx(m^4) </label>
+                    <input class="var-spinner" id="Ivalue" name="value" />
+                  </div>
+                </div> -->
+                <div>
+                  
+                </div>
+               
+              </div>
+              <div id="canvas-container">
+                <img class = "img" src = "http://10.53.40.214:8080/video">
+                <!-- <iframe src="https://vdo.ninja/?view=D9t4X6y" type="video/mp4"></iframe> -->
+                <!-- <canvas id="canvas" class="canvas">
+                 
+                </canvas> -->
+               
+              </div>
+              <div class="graph-div display-hide" id="generatePlot"></div>
+              <!-- <div class="graph-div display-hide" id="zingchart-graphscreen2"></div> -->
+              <!-- <div class="graph-div display-hide">
+                <canvas id="graphscreen1" class="canvas">
+                
+
+                </canvas>
+              </div>
+              <div class="graph-div display-hide">
+                <canvas id="graphscreen2" class="canvas"></canvas>
+              </div> -->
+            </div>
+          </div>
+          </div>
+          <div class="main__task-div footer">
+            <p>Copyright © SOLVE The Virtual Lab @ NITK Surathkal</p>
+          </div>
         </div>
-      
+      </div>
     </div>
+    <script>
+      // Function to show or hide buttons based on the selected option
+      function updateButtons() {
+        const dropdown = document.getElementById("myDropdown");
+        const loadButton = document.getElementById("loadButton");
+        const loadStepperButton = document.getElementById("loadStepperButton");
     
-    </main>
-      
-  </div>
-  </header>
- 
- 
-
-  <script>
-
-    function navbar1() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
+        if (dropdown.value === "option1") { // Servo Motor
+          loadButton.style.display = "block";
+          loadStepperButton.style.display = "none";
+        } else if (dropdown.value === "option2") { // Stepper Motor
+          loadButton.style.display = "none";
+          loadStepperButton.style.display = "block";
+        } else if (dropdown.value === "option3") { // Both
+          loadButton.style.display = "block";
+          loadStepperButton.style.display = "block";
+        }
       }
-
-    }
-
-    function navbar2() {
-      var y = document.getElementById("item-list-nav");
-      if (y.className === "item-list") {
-        y.className += " responsive";
-      } else {
-        y.className = "item-list";
-      }
-    }
-    function runMotor() {
+    
+      // Event listener to update buttons when dropdown selection changes
+      const dropdown = document.getElementById("myDropdown");
+      dropdown.addEventListener("change", updateButtons);
+    
+      // Initial update
+      updateButtons();
+      //Load and Load stepper button fuction
+      function runMotor() {
       // Make a fetch request to the Express server to run the motor.
-      fetch('http://10.53.59.207:3000/run-motor')
+      fetch('http://10.53.20.148:3000/run-motor')
         .then(response => response.text())
         .then(text => {
           // The motor is running!
@@ -227,46 +248,59 @@
 
     function runStepperMotor() {
       // Make a fetch request to the Express server to run the motor.
-      fetch('http://10.53.59.207:3000/run-stepmotor')
+      fetch('http://10.53.20.148:3000/run-stepmotor')
         .then(response => response.text())
         .then(text => {
           // The motor is running!
         });
     }
 
-    const generatePlotButton = document.getElementById("generatePlot");
-    generatePlotButton.addEventListener("click", () => {
-      // Open the plot page in a new window/tab
-      window.open("/plotPage.html", "_blank");
-    });
-  </script>
-  <script>
-    // Function to show or hide buttons based on the selected option
-    function updateButtons() {
-      const dropdown = document.getElementById("myDropdown");
-      const loadButton = document.getElementById("loadButton");
-      const loadStepperButton = document.getElementById("loadStepperButton");
-  
-      if (dropdown.value === "option1") { // Servo Motor
-        loadButton.style.display = "block";
-        loadStepperButton.style.display = "none";
-      } else if (dropdown.value === "option2") { // Stepper Motor
-        loadButton.style.display = "none";
-        loadStepperButton.style.display = "block";
-      } else if (dropdown.value === "option3") { // Both
-        loadButton.style.display = "block";
-        loadStepperButton.style.display = "block";
-      }
-    }
-  
-    // Event listener to update buttons when dropdown selection changes
-    const dropdown = document.getElementById("myDropdown");
-    dropdown.addEventListener("change", updateButtons);
-  
-    // Initial update
-    updateButtons();
-  </script>
-  
-</body>
-</html>
+    
 
+  // Function to display ZingChart graphs when the button is clicked
+     function plotgraph() {
+      window.open("plotPage.html", "_blank");
+     }
+    //   const generatePlotButton = document.getElementById("generatePlot");
+    // generatePlotButton.addEventListener("click", () => {
+    //   // Open the plot page in a new window/tab
+    //   window.open("/plotPage.html", "_blank");
+    // });
+    
+
+    // Example ZingChart configurations for graphs
+  //   const chartConfig1 = {
+  //     type: 'line',
+  //     series: [{ values: [5, 10, 15, 20, 25] }],
+  //   };
+
+  //   const chartConfig2 = {
+  //     type: 'bar',
+  //     series: [{ values: [30, 20, 10, 15, 5] }],
+  //   };
+
+  //   // Render ZingChart graphs in the specified containers
+  //   renderZingChartGraph('zingchart-graphscreen1', chartConfig1);
+  //   renderZingChartGraph('zingchart-graphscreen2', chartConfig2);
+
+  //   // Show the graph containers after rendering the graphs
+  //   document.getElementById('zingchart-graphscreen1').style.display = 'block';
+  //   document.getElementById('zingchart-graphscreen2').style.display = 'block';
+  // }
+
+  // // Function to render ZingChart graphs
+  // function renderZingChartGraph(containerId, chartConfig) {
+  //   zingchart.render({
+  //     id: containerId,
+  //     data: chartConfig,
+  //     height: '300px',
+  //     width: '100%'
+  //   });
+  // }
+   </script>
+
+   
+    
+    
+  </body>
+</html>

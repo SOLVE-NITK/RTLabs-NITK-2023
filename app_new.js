@@ -23,7 +23,6 @@ app.get("/", (req, res) => {
   });
 
   //For the mototr driver:
-const rpio = require('rpio');
 // //Setup done:
 // rpio.open(in1Pin,rpio.OUTPUT)
 
